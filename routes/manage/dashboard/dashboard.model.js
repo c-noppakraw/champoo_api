@@ -38,6 +38,12 @@ module.exports.getAllDashboard = () => {
 module.exports.createDashboard = (newDashboard) => {
     return Dashboard.create(newDashboard)
 };
+module.exports.getOneDashboardById = (id) => {
+    const query = {
+        _id: id,
+    }
+    return Dashboard.findOne(query);
+}
 module.exports.updateDashboard = (id, data) => {
     const query = {
         _id: id
@@ -46,6 +52,17 @@ module.exports.updateDashboard = (id, data) => {
         $set: {
             title: data.title,
             content: data.content,
+            dateUpdate: data.dateUpdate
+        }
+    },{ new: true });
+};
+module.exports.deleteDashboard = (id, data) => {
+    const query = {
+        _id: id
+    }
+    return Dashboard.findByIdAndUpdate(query, {
+        $set: {
+            visible: data.visible,
             dateUpdate: data.dateUpdate
         }
     },{ new: true });

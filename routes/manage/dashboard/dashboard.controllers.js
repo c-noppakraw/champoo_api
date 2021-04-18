@@ -29,6 +29,16 @@ const createDashboard = async (req, res, next) => {
     }
 };
 
+const setDashboard = async(req, res, next) => {
+    try {
+        const id = req.params.id;
+        const dashboard = await service.getOneDashboardById(id);
+        return res.status(201).json({ data: dashboard });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const editDashboard = async (req, res, next) => {
     try {
         const errors = validationResult(req);
@@ -46,4 +56,14 @@ const editDashboard = async (req, res, next) => {
     }
 };
 
-module.exports = { showDashboard, createDashboard, editDashboard };
+const deleteDashboard = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const dashboard = await service.deleteDashboard(id);
+        return res.status(200).json({ data: dashboard });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = { showDashboard, createDashboard, setDashboard, editDashboard, deleteDashboard };

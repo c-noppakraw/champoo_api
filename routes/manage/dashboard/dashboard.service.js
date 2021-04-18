@@ -28,6 +28,15 @@ const save = async (data) => {
     }
 };
 
+const getOneDashboardById = async (id) => {
+    try {
+        const dashboard = await Dashboard.getOneDashboardById(id);
+        return dashboard;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const saveEdit = async (id, data) => {
     try {
         let day = dayjs().format();
@@ -43,4 +52,18 @@ const saveEdit = async (id, data) => {
     }
 }
 
-module.exports = { setDashboard, save, saveEdit };
+const deleteDashboard = async (id) => {
+    try {
+        let day = dayjs().format();
+        data = new Dashboard ({
+            visible: 0,
+            dateUpdate: day,
+        });
+        const dashboard = await Dashboard.deleteDashboard(id, data);
+        return dashboard;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = { setDashboard, save, getOneDashboardById, saveEdit, deleteDashboard };
