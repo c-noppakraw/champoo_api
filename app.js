@@ -8,7 +8,8 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/auth/login/login');
 const registerRouter = require('./routes/auth/register/register');
 const adminRouter = require('./routes/manage/admin/admin');
-const manageDashboard = require('./routes/manage/dashboard/dashboard');
+const manageDashboardRouter = require('./routes/manage/dashboard/dashboard');
+const dashboardRouter = require('./routes/dashboard/dashboard');
 
 // db
 const mongoose = require('mongoose');
@@ -30,7 +31,8 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/manage/admins', adminRouter);
-app.use('/manage/dashboard', manageDashboard);
+app.use('/manage/dashboard', manageDashboardRouter);
+app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
