@@ -10,8 +10,10 @@ const registerRouter = require('./routes/auth/register/register');
 const adminRouter = require('./routes/manage/admin/admin');
 const manageDashboardRouter = require('./routes/manage/dashboard/dashboard');
 const managePortfolioRouter = require('./routes/manage/portfolio/portfolio');
+const manageHistoryRouter = require('./routes/manage/history/history');
 const dashboardRouter = require('./routes/dashboard/dashboard');
 const portfolioRouter = require('./routes/portfolio/portfolio');
+const historyRouter = require('./routes/history/history');
 
 // db
 const mongoose = require('mongoose');
@@ -35,8 +37,10 @@ app.use('/register', registerRouter);
 app.use('/manage/admins', adminRouter);
 app.use('/manage/dashboard', manageDashboardRouter);
 app.use('/manage/portfolio', managePortfolioRouter);
+app.use('/manage/history', manageHistoryRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/portfolio', portfolioRouter);
+app.use('/history', historyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
